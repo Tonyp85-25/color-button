@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{SyntheticEvent, useState} from 'react';
+
 import './App.css';
 
 function App() {
+  const [color,setColor]= useState('red')
+  const nextColor = color=== 'red'? 'blue':'red'
+  const [disabled, setDisabled] = useState(false)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+     <button style={{backgroundColor:color}} onClick={()=>setColor(nextColor)} disabled={disabled}>Change to {nextColor}</button>
+     <input type="checkbox" name="" id="disable-button-checkbox"  onChange={(e:SyntheticEvent<HTMLInputElement>)=>setDisabled(e.currentTarget.checked)} defaultChecked={disabled} aria-checked={disabled}/>
+     <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
   );
 }
