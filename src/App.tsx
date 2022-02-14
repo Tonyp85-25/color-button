@@ -2,6 +2,10 @@ import React,{SyntheticEvent, useState} from 'react';
 
 import './App.css';
 
+export function replaceCamelWithSpaces(colorName:string){
+  return colorName.replace(/\B([A-Z])\B/g,' $1')
+}
+
 function App() {
   const [color,setColor]= useState('red')
   const nextColor = color=== 'red'? 'blue':'red'
